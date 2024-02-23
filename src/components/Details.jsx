@@ -2,62 +2,102 @@ import React from "react";
 import "./Details.css";
 
 const Details = ({ weather }) => {
-  const items = [
-    {
-      id: 1,
-      icon: <i className="fa-solid fa-arrow-down"></i>,
-      title: "min",
-      data: (weather.temp_min - 273).toFixed(),
-      units: "°C",
-    },
-    {
-      id: 2,
-      icon: <i className="fa-solid fa-arrow-up"></i>,
-      title: "max",
-      data: (weather.temp_max - 273).toFixed(),
-      units: "°C",
-    },
-    {
-      id: 3,
-      icon: <i className="fa-regular fa-face-smile"></i>,
-      title: "feels like",
-      data: (weather.feels_like - 273).toFixed(),
-      units: "°C",
-    },
-    {
-      id: 4,
-      icon: <i className="fa-solid fa-down-left-and-up-right-to-center"></i>,
-      title: "pressure",
-      data: weather.pressure.toFixed(),
-      units: "hPa",
-    },
-    {
-      id: 5,
-      icon: <i className="fa-solid fa-droplet"></i>,
-      title: "humidity",
-      data: weather.humidity.toFixed(),
-      units: "%",
-    },
-    {
-      id: 6,
-      icon: <i className="fa-solid fa-wind"></i>,
-      title: "wind speed",
-      data: weather.speed.toFixed(),
-      units: "m/s",
-    },
-  ];
+  const sunRise = new Date(weather.sunrise * 1000);
+  const sunSet = new Date(weather.sunset * 1000);
+
+  const sunriseHour = sunRise.getHours();
+  const sunriseMinute = sunRise.getMinutes();
+
+  const sunsetHour = sunSet.getHours();
+  const sunsetMinute = sunSet.getMinutes();
 
   return (
     <div className="sec sec-desc">
-      {items.map(({ id, icon, title, data, units }) => (
-        <div key={id} className="card">
+      <div className="card">
+        <div className="card-content">
+          <div className="river"></div>
           <div className="card-icon">
-            {icon}
-            <small>{title}</small>
+            <i className="fa-solid fa-arrow-down"></i>
+            <small>min</small>
           </div>
-          <h2>{`${data}${units}`}</h2>
+          <h4>{`${(weather.temp_min - 273).toFixed()}°C`}</h4>
         </div>
-      ))}
+      </div>
+
+      <div className="card">
+        <div className="card-content">
+          <div className="river2"></div>
+          <div className="card-icon">
+            <i className="fa-solid fa-arrow-up"></i>
+            <small>max</small>
+          </div>
+          <h4>{`${(weather.temp_max - 273).toFixed()}°C`}</h4>
+        </div>
+      </div>
+      <div className="card">
+        <div className="card-content">
+          {/* <div className="sun"></div> */}
+          <div className="card-icon">
+            <i className="fa-regular fa-face-smile"></i>
+            <small>feels like</small>
+          </div>
+          <h4>{`${(weather.feels_like - 273).toFixed()}°C`}</h4>
+        </div>
+      </div>
+
+      <div className="card">
+        <div className="card-content">
+          <div className="pressure"></div>
+          <div className="card-icon">
+            <i className="fa-solid fa-down-left-and-up-right-to-center"></i>
+            <small>pressure</small>
+          </div>
+          <h4>{`${weather.pressure.toFixed()}hPa`}</h4>
+        </div>
+      </div>
+
+      <div className="card">
+        <div className="card-content">
+          {/* <div className="water"></div> */}
+          <div className="card-icon">
+            <i className="fa-solid fa-droplet"></i>
+            <small>humidity</small>
+          </div>
+          <h4>{`${weather.humidity.toFixed()}%`}</h4>
+        </div>
+      </div>
+      <div className="card">
+        <div className="card-content">
+          <div className="wind"></div>
+          <div className="wind"></div>
+          <div className="wind"></div>
+          <div className="card-icon">
+            <i className="fa-solid fa-wind"></i>
+            <small>wind speed</small>
+          </div>
+          <h4>{`${weather.speed.toFixed()}m/s`}</h4>
+        </div>
+      </div>
+      <div className="card">
+        <div className="card-content">
+          <div className="sun"></div>
+          <div className="card-icon">
+            <i className="fa-solid fa-sun"></i>
+            <small>sun rise</small>
+          </div>
+          <h4>{`${sunriseHour}:${sunriseMinute}`}</h4>
+        </div>
+      </div>
+      <div className="card">
+        <div className="card-content">
+          <div className="sunset"></div>
+          <div className="card-icon">
+            <i className="fa-solid fa-cloud-sun"></i>
+            <small>sun set</small>
+          </div>
+          <h4>{`${sunsetHour}:${sunsetMinute}`}</h4>
+        </div>
+      </div>
     </div>
   );
 };

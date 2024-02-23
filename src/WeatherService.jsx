@@ -9,16 +9,22 @@ const getData = async (city, units = "metrics") => {
     .then((res) => res.json())
     .then((data) => data);
   
-    const {weather , main:{temp, feels_like , temp_min , temp_max, pressure,humidity},
-    wind:{speed},
-    sys:{country},
-    name,
-  }=data
+    const {
+      weather,
+      main: { temp, feels_like, temp_min, temp_max, pressure, humidity },
+      wind: { speed },
+      sys: { country, sunrise, sunset },
+      name,
+      visibility,
+    } = data;
+
+
 
   const {description ,icon}=weather[0];
+  console.log(data);
   return {
     description,
-    iconURL : iconImg(icon),
+    iconURL: iconImg(icon),
     temp,
     feels_like,
     temp_min,
@@ -28,6 +34,9 @@ const getData = async (city, units = "metrics") => {
     speed,
     country,
     name,
+    sunrise,
+    sunset,
+    visibility,
   };
 };
 

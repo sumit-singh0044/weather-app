@@ -1,6 +1,6 @@
 .sec-desc{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 0.5rem;
     
 }
@@ -11,10 +11,16 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--section-overlay) !important;
-    padding: 1rem;
+    padding: 0.3rem;
     border-radius: 0.4rem;
     color: white !important;
+    position: relative;    
+    overflow: hidden;
+
 }
+
+
+
 .card-icon{
     width: 100%;
     display: flex;
@@ -22,11 +28,12 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-    margin-bottom: 12px;
+    margin-bottom: px;
 }
 .card-icon>small{
     text-transform: capitalize;
 }
+
 
 @media screen and (max-width:1024px) {
     .sec-desc{
@@ -47,6 +54,244 @@
 
 .copy1 p a {
     margin-right: 10px;
+}
+
+
+/* animation sec  */
+.sun {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    /* Initially red */
+    border-radius: 50%;
+    animation: riseSun 10s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes riseSun {
+    0% {
+        bottom: -100px;
+        background-color: red;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        bottom: 200px;
+        background-color: yellow;
+        opacity: 0;
+    }
+}
+
+.sunset {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    /* Initially red */
+    border-radius: 50%;
+    animation: fallSun 10s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes fallSun {
+    0% {
+        top: -100px;
+        background-color: red;
+        /* Start with red */
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        top: calc(100% + 100px);
+        background-color: yellow;
+        /* End with yellow */
+        opacity: 0;
+    }
+}
+
+.wind {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    /* Initially positioned outside the container */
+    width: 100%;
+    height: 100%;
+    animation: blowWind 5s linear infinite;
+}
+
+.wind::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Semi-transparent white circles */
+    border-radius: 50%;
+    animation: moveAir 2s linear infinite;
+    /* Adjust the animation duration as needed */
+}
+
+.wind::before {
+    left: 20%;
+    /* Adjust the horizontal position of the circle */
+}
+
+.wind::before {
+    left: 40%;
+    /* Adjust the horizontal position of the circle */
+}
+
+.wind::before {
+    left: 60%;
+    /* Adjust the horizontal position of the circle */
+}
+
+.wind::before {
+    left: 80%;
+    /* Adjust the horizontal position of the circle */
+}
+
+@keyframes blowWind {
+    0% {
+        left: -100%;
+        /* Start from the left */
+    }
+
+    100% {
+        left: 100%;
+        /* Move to the right */
+    }
+}
+
+@keyframes moveAir {
+    0% {
+        top: 10px;
+        /* Adjust the starting position of the circles */
+        left: 0;
+        /* Start from the left edge */
+    }
+
+    100% {
+        top: 50px;
+        /* Adjust the ending position of the circles */
+        left: 100%;
+        /* Move to the right edge */
+    }
+}
+
+.river {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    /* 90% height of the card */
+    background-color: rgba(0, 128, 255, 0.2);
+    /* Blue color with 50% opacity */
+    animation: flowRiver 1s linear infinite alternate;
+    /* Adjust animation duration and timing function as needed */
+}
+
+@keyframes flowRiver {
+    0% {
+        transform: translateY(-5%);
+        /* Move up */
+    }
+
+    100% {
+        transform: translateY(5%);
+        /* Move down */
+    }
+}
+.river2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85%;
+    /* 90% height of the card */
+    background-color: rgba(0, 128, 255, 0.2);
+    /* Blue color with 50% opacity */
+    animation: flowRiver 2s linear infinite alternate;
+    /* Adjust animation duration and timing function as needed */
+}
+
+@keyframes flowRiver {
+    0% {
+        transform: translateY(-5%);
+        /* Move up */
+    }
+
+    100% {
+        transform: translateY(5%);
+        /* Move down */
+    }
+}
+
+.pressure {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    /* Initial width */
+    height: 100px;
+    /* Initial height */
+    background-color: red;
+    /* Initially red */
+    border-radius: 50%;
+    animation: changeSize 5s ease-in-out infinite alternate;
+    /* Apply animation */
+    opacity: 0.5;
+}
+
+@keyframes changeSize {
+    0% {
+        width: 100px;
+        /* Initial width */
+        height: 100px;
+        /* Initial height */
+        background-color: red;
+        /* Start with red */
+        opacity: 0;
+        /* Initially transparent */
+    }
+
+    50% {
+        width: 150px;
+        /* Increase width */
+        height: 150px;
+        /* Increase height */
+        background-color: red;
+        /* Stay red */
+        opacity: 0.5;
+    }
+
+    100% {
+        width: 200px;
+        /* Increase width */
+        height: 200px;
+        /* Increase height */
+        background-color: red;
+        /* End with yellow */
+        opacity: 0;
+        /* Disappear */
+    }
 }
 
 
