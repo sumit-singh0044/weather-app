@@ -15,7 +15,7 @@ const Details = ({ weather }) => {
     <div className="sec sec-desc">
       <div className="card">
         <div className="card-content">
-          <div className="river"></div>
+          
           <div className="card-icon">
             <i className="fa-solid fa-arrow-down"></i>
             <small>min</small>
@@ -26,7 +26,7 @@ const Details = ({ weather }) => {
 
       <div className="card">
         <div className="card-content">
-          <div className="river2"></div>
+          
           <div className="card-icon">
             <i className="fa-solid fa-arrow-up"></i>
             <small>max</small>
@@ -34,9 +34,10 @@ const Details = ({ weather }) => {
           <h4>{`${(weather.temp_max - 273).toFixed()}°C`}</h4>
         </div>
       </div>
+      
       <div className="card">
         <div className="card-content">
-          {/* <div className="sun"></div> */}
+          
           <div className="card-icon">
             <i className="fa-regular fa-face-smile"></i>
             <small>feels like</small>
@@ -58,7 +59,7 @@ const Details = ({ weather }) => {
 
       <div className="card">
         <div className="card-content">
-          {/* <div className="water"></div> */}
+        
           <div className="card-icon">
             <i className="fa-solid fa-droplet"></i>
             <small>humidity</small>

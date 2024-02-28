@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import image1 from "./images/sunny.jpg";
-// import image2 from "./images/d-snowy.jpg";
+import image2 from "./images/clear.jpg";
 import image3 from "./images/d-cloudy.jpg";
 import image4 from "./images/hazee.jpg";
 import image5 from "./images/d-rainy.jpg";
@@ -52,21 +52,22 @@ const App = () => {
       if (temp < 5) {
         if (des.includes("rain")) setBgi(image5);
         else setBgi(image8);
-      } 
-      else if (temp > 5 && temp <=13) {
+      } else if (temp > 5 && temp <= 13) {
         if (des.includes("rain")) setBgi(image5);
         else setBgi(image9);
-      } 
-      else if(temp>13 && temp<19) setBgi(image4)
-      else {
-        if (temp > 33) setBgi(image1);
-        else if (des.includes("smoke")) setBgi(image10);
-        else if (des.includes("clear sky")) setBgi(image1);
-        else if (des.includes("clouds")) setBgi(image3);
-        else if (des.includes("rain") || des.includes("drizzle"))
-          setBgi(image5);
-        else if (des.includes("thunder")) setBgi(image6);
-        else if (des.includes("haze")) setBgi(image7);
+      } else if (temp > 13 && temp < 19) {
+        if (des.includes("rain")) setBgi(image5);
+        else setBgi(image4);
+      } else {
+        if (des.includes("rain") || des.includes("drizzle")) setBgi(image5);
+        else if (temp > 33) setBgi(image1);
+        else {
+          if (des.includes("smoke")) setBgi(image10);
+          else if (des.includes("clear sky")) setBgi(image2);
+          else if (des.includes("clouds")) setBgi(image3);
+          else if (des.includes("thunder")) setBgi(image6);
+          else if (des.includes("haze")) setBgi(image7);
+        }
       }
     };
 
@@ -83,7 +84,7 @@ const App = () => {
         <div className="overlay">
           {weather && (
             <div className="container">
-              <div className="sec sec-input">
+              {/* <div className="sec sec-input">
                 <input
                   type="text"
                   placeholder={cityName}
@@ -93,6 +94,34 @@ const App = () => {
                 <button className="button" onClick={handleClick}>
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </button>
+              </div> */}
+
+              <div className="wave-group">
+                <input
+                  required
+                  type="text"
+                  className="input"
+                  onChange={handleChange}
+                  onKeyDown={handleKeyPress}
+                />
+                <button className="button" onClick={handleClick}>
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <span className="bar"></span>
+                <label className="label">
+                  <span className="label-char" style={{ "--index": 0 }}>
+                    C
+                  </span>
+                  <span className="label-char" style={{ "--index": 1 }}>
+                    i
+                  </span>
+                  <span className="label-char" style={{ "--index": 2 }}>
+                    t
+                  </span>
+                  <span className="label-char" style={{ "--index": 3 }}>
+                    y
+                  </span>
+                </label>
               </div>
 
               <div className="sec1 sec-temp">

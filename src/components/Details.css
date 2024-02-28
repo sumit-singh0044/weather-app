@@ -10,14 +10,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--section-overlay) !important;
+    /* background-color: var(--section-overlay) !important; */
+background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+
     padding: 0.3rem;
     border-radius: 0.4rem;
-    color: white !important;
+    color: black !important;
+    font-weight: 500;
     position: relative;    
     overflow: hidden;
 
 }
+
 
 
 
@@ -26,9 +33,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: center ;
     gap: 5px;
-    margin-bottom: px;
+    /* margin-bottom: px; */
 }
 .card-icon>small{
     text-transform: capitalize;
@@ -98,7 +105,6 @@
     width: 100px;
     height: 100px;
     background-color: red;
-    /* Initially red */
     border-radius: 50%;
     animation: fallSun 10s linear infinite;
     opacity: 0.5;
@@ -108,7 +114,6 @@
     0% {
         top: -100px;
         background-color: red;
-        /* Start with red */
         opacity: 0;
     }
 
@@ -119,7 +124,6 @@
     100% {
         top: calc(100% + 100px);
         background-color: yellow;
-        /* End with yellow */
         opacity: 0;
     }
 }
@@ -128,7 +132,6 @@
     position: absolute;
     top: 0;
     left: -100%;
-    /* Initially positioned outside the container */
     width: 100%;
     height: 100%;
     animation: blowWind 5s linear infinite;
@@ -140,108 +143,47 @@
     width: 15px;
     height: 15px;
     background-color: rgba(255, 255, 255, 0.3);
-    /* Semi-transparent white circles */
     border-radius: 50%;
     animation: moveAir 2s linear infinite;
-    /* Adjust the animation duration as needed */
 }
 
 .wind::before {
     left: 20%;
-    /* Adjust the horizontal position of the circle */
 }
 
 .wind::before {
     left: 40%;
-    /* Adjust the horizontal position of the circle */
 }
 
 .wind::before {
     left: 60%;
-    /* Adjust the horizontal position of the circle */
 }
 
 .wind::before {
     left: 80%;
-    /* Adjust the horizontal position of the circle */
 }
 
 @keyframes blowWind {
     0% {
         left: -100%;
-        /* Start from the left */
     }
 
     100% {
         left: 100%;
-        /* Move to the right */
     }
 }
 
 @keyframes moveAir {
     0% {
         top: 10px;
-        /* Adjust the starting position of the circles */
         left: 0;
-        /* Start from the left edge */
     }
 
     100% {
         top: 50px;
-        /* Adjust the ending position of the circles */
-        left: 100%;
-        /* Move to the right edge */
-    }
+        left: 100%;    }
 }
 
-.river {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30%;
-    /* 90% height of the card */
-    background-color: rgba(0, 128, 255, 0.2);
-    /* Blue color with 50% opacity */
-    animation: flowRiver 1s linear infinite alternate;
-    /* Adjust animation duration and timing function as needed */
-}
-
-@keyframes flowRiver {
-    0% {
-        transform: translateY(-5%);
-        /* Move up */
-    }
-
-    100% {
-        transform: translateY(5%);
-        /* Move down */
-    }
-}
-.river2 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 85%;
-    /* 90% height of the card */
-    background-color: rgba(0, 128, 255, 0.2);
-    /* Blue color with 50% opacity */
-    animation: flowRiver 2s linear infinite alternate;
-    /* Adjust animation duration and timing function as needed */
-}
-
-@keyframes flowRiver {
-    0% {
-        transform: translateY(-5%);
-        /* Move up */
-    }
-
-    100% {
-        transform: translateY(5%);
-        /* Move down */
-    }
-}
 
 .pressure {
     position: absolute;
@@ -249,49 +191,33 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100px;
-    /* Initial width */
     height: 100px;
-    /* Initial height */
     background-color: red;
-    /* Initially red */
     border-radius: 50%;
     animation: changeSize 5s ease-in-out infinite alternate;
-    /* Apply animation */
-    opacity: 0.5;
+    opacity: 0;
 }
 
 @keyframes changeSize {
     0% {
-        width: 100px;
-        /* Initial width */
-        height: 100px;
-        /* Initial height */
+        width: 20px;
+        height: 20px;
         background-color: red;
-        /* Start with red */
-        opacity: 0;
-        /* Initially transparent */
+        opacity: 0.5;
     }
 
     50% {
         width: 150px;
-        /* Increase width */
         height: 150px;
-        /* Increase height */
         background-color: red;
-        /* Stay red */
-        opacity: 0.5;
+        opacity: 0.2;
+        
     }
 
     100% {
         width: 200px;
-        /* Increase width */
         height: 200px;
-        /* Increase height */
-        background-color: red;
-        /* End with yellow */
+        background-color: yellow;
         opacity: 0;
-        /* Disappear */
     }
 }
-
-
